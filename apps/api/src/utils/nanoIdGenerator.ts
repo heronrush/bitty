@@ -1,13 +1,11 @@
 import { customAlphabet } from "nanoid";
 
 export function nanoidGenerator() {
-  const numberOfCharacters = Math.random() * 10;
-  console.log(numberOfCharacters);
+  const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  const customAlpha = `${uppercaseLetters}${lowercaseLetters}`;
 
-  const id = customAlphabet("ABCDE", 8);
+  const id = customAlphabet(customAlpha, 6);
 
-  const nanoid = id();
-  console.log(nanoid);
+  return id();
 }
-
-nanoidGenerator();
