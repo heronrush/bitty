@@ -1,5 +1,6 @@
 import { customAlphabet } from "nanoid";
 
+// generates a random nanoid, not the full short url
 export function nanoidGenerator() {
   const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";

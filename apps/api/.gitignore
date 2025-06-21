@@ -3,3 +3,7 @@ node_modules
 .env
 
 /generated/prisma
+
+
+# sql queries
+/prisma/migrations
