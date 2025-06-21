@@ -15,7 +15,7 @@ export async function saveUserUrl(
   console.log(req.hostname);
 
   const nanoid = nanoidGenerator();
-  let shortURL = `https://shr.inky/${nanoid}`;
+  let shortURL = `http://shr.inky/${nanoid}`;
 
   const response = await prisma.link.create({
     data: {

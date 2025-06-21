@@ -1,10 +1,10 @@
 import { Router } from "express";
+import { redirectRequest } from "../middleware/findURL";
 
 export const redirectRequestRouter = Router();
 
-redirectRequestRouter.post("/:url", (req, res) => {
+redirectRequestRouter.post("/:url", redirectRequest, (req, res) => {
   const shortURL = req.params.url;
-  console.log(shortURL);
 
   res.json({ msg: "successfully extracted the url" });
 });
