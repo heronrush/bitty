@@ -1,19 +1,13 @@
-import TopBar from "@/components/topbar";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-
 export default function Home() {
   return (
-    <>
-      <TopBar />
+    <div className="text-center py-20">
+      <h1 className="text-5xl">Shrinky</h1>
 
-      <div>
-        <p>Create a short link</p>
-
-        <Button>
-          <Link href="/shorten">LINK</Link>
-        </Button>
-      </div>
-    </>
+      <p className="mt-5 text-3xl">A link shortener platform</p>
+      <p className="text-3xl mt-10">
+        Provide a long URL and shorten it with just a{" "}
+        <span className="text-gray-500">button click</span>
+      </p>
+    </div>
   );
 }
