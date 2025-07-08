@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(rootRouter);
 
 app.get("/", (req, res) => {
-  res.json({ msg: "hello from backend api" });
+  res.json({ msg: "hello from backend api of shrinky" });
 });
 
 // catch all route
