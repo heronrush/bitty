@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 // catch all route
 app.use((req, res, next) => {
-  res.json({ msg: "route not found" });
+  res.status(404).json({ msg: "route not found" });
 });
 
 app.listen(3002, () => {

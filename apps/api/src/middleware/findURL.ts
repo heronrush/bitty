@@ -10,7 +10,7 @@ export async function redirectRequest(
 ) {
   const userShortURL = req.params.url;
 
-  let shortURL = `http://shr.inky/${userShortURL}`;
+  let shortURL = `http://shrinky/${userShortURL}`;
 
   const response = await prisma.link.findFirst({
     where: {
