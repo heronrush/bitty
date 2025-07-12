@@ -6,9 +6,9 @@ import { useAtomValue } from "jotai";
 async function copyTextToClipboard(textToCopy: string) {
   try {
     await navigator.clipboard.writeText(textToCopy);
-    alert("Text copied to clipboard successfully!");
+    alert("Short url copied to clipboard successfully!");
   } catch (err) {
-    alert("Failed to copy text, do it manually");
+    alert("Failed to copy url, do it manually");
   }
 }
 
