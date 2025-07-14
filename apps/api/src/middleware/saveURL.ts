@@ -12,8 +12,6 @@ export async function saveUserUrl(
 ) {
   const url: string = req.body.url;
 
-  console.log(req.hostname);
-
   const nanoid = nanoidGenerator();
   let shortURL = `bitty.website/${nanoid}`;
 

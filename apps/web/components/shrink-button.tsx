@@ -3,10 +3,12 @@
 import { shortUrlAtom, urlAtom } from "@/store/atoms/urlAtom";
 import { useAtomValue, useSetAtom } from "jotai";
 import axios from "axios";
+import { useState } from "react";
 
 export default function ShrinkButton() {
   const url = useAtomValue(urlAtom);
   const setShortUrl = useSetAtom(shortUrlAtom);
+  const [disable, setDisable] = useState(false);
 
   async function handleClick() {
     const response = await axios.post("http://localhost:3002/api/short", {

@@ -10,20 +10,23 @@ export async function redirectRequest(
 ) {
   const userShortURL = req.params.url;
 
-  let shortURL = `http://shrinky/${userShortURL}`;
+  let shortURL = `bitty.website/${userShortURL}`;
 
-  const response = await prisma.link.findFirst({
-    where: {
-      shortURL,
-    },
-    select: {
-      originalURL: true,
-    },
-  });
+  let response: { originalURL: string } | null;
 
-  if (response?.originalURL) {
-    res.json({ originalURL: response.originalURL });
-  } else {
-    res.status(404).json({ msg: "NOT FOUND" });
+  try {
+    response = await prisma.link.findFirst({
+      where: {
+        shortURL,
+      },
+      select: {
+        originalURL: true,
+      },
+    });
+
+    res.status(200).json({ originalURL: response?.originalURL });
+  } catch (err) {
+    console.log(err);
+    res.json({ msg: "NOT FOUND" });
   }
 }
