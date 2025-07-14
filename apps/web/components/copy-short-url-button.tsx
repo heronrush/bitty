@@ -7,7 +7,8 @@ async function copyTextToClipboard(textToCopy: string) {
   try {
     await navigator.clipboard.writeText(textToCopy);
     alert("Short url copied to clipboard successfully!");
-  } catch (err) {
+  } catch (err: unknown) {
+    console.log(err);
     alert("Failed to copy url, do it manually");
   }
 }
