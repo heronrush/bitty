@@ -1,5 +1,5 @@
-import axios from "axios";
-import { notFound, redirect } from "next/navigation";
+import axios from 'axios';
+import { notFound, redirect } from 'next/navigation';
 
 type LinkType = {
   params: {

@@ -1,11 +1,11 @@
 "use client";
 
 import { invalidUrlAtom, urlAtom } from "@/store/atoms/urlAtom";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { ChangeEvent } from "react";
 
 export default function LongURLInput() {
-  const [url, setUrl] = useAtom(urlAtom);
+  const setUrl = useSetAtom(urlAtom);
 
   function onInputHandle(e: ChangeEvent<HTMLInputElement>) {
     setUrl(e.target.value);
@@ -15,7 +15,7 @@ export default function LongURLInput() {
     <>
       <input
         type="text"
-        className="border p-2 w-100"
+        className="w-120 focus:outline-3 rounded-sm border border-gray-400 p-2 outline-none focus:border-gray-700"
         placeholder="https://www.examplesite.com"
         onChange={onInputHandle}
       />
@@ -26,9 +26,5 @@ export default function LongURLInput() {
 export function InvalidUrlWarning() {
   const invalidUrl = useAtomValue(invalidUrlAtom);
 
-  return (
-    <p className="mb-3 text-red-700 mr-10">
-      {invalidUrl ? "Provide a valid url" : ""}
-    </p>
-  );
+  return <p className="mb-3 mr-10 text-red-700">{invalidUrl ? "Provide a valid url" : ""}</p>;
 }
