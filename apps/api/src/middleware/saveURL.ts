@@ -1,15 +1,11 @@
-import { NextFunction, Request, Response } from "express";
-import { PrismaClient } from "../../generated/prisma";
-import { nanoidGenerator } from "../utils/nanoIdGenerator";
+import { NextFunction, Request, Response } from 'express';
+import { PrismaClient } from '../../generated/prisma';
+import { nanoidGenerator } from '../utils/nanoIdGenerator';
 
 const prisma = new PrismaClient();
 
 // constructs the full short url and saves to the db
-export async function saveUserUrl(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export async function saveUserUrl(req: Request, res: Response, next: NextFunction) {
   const url: string = req.body.url;
 
   const nanoid = nanoidGenerator();
@@ -23,7 +19,7 @@ export async function saveUserUrl(
   });
 
   res.json({
-    msg: "your link has been shortened",
+    msg: 'your link has been shortened',
     originalURL: url,
     shortURL: shortURL,
   });

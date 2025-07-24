@@ -1,13 +1,9 @@
-import { NextFunction, Request, Response } from "express";
-import { PrismaClient } from "../../generated/prisma";
+import { NextFunction, Request, Response } from 'express';
+import { PrismaClient } from '../../generated/prisma';
 
 const prisma = new PrismaClient();
 
-export async function redirectRequest(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export async function redirectRequest(req: Request, res: Response, next: NextFunction) {
   const userShortURL = req.params.url;
 
   let shortURL = `bitty.website/${userShortURL}`;
@@ -27,6 +23,6 @@ export async function redirectRequest(
     res.status(200).json({ originalURL: response?.originalURL });
   } catch (err) {
     console.log(err);
-    res.json({ msg: "NOT FOUND" });
+    res.json({ msg: 'NOT FOUND' });
   }
 }
