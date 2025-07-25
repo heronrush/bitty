@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HamburgerIcon from "./hamburger-icon";
 import CreateLinkButton from "./create-link-button";
+import { LogoutButton } from "../buttons";
 
 export default function DashboardTopbar() {
   return (
@@ -11,7 +12,9 @@ export default function DashboardTopbar() {
 
       <div className="flex items-center gap-14 align-middle">
         <CreateLinkButton />
-        <HamburgerIcon />
+        <LogoutButton />
+
+        {/* <HamburgerIcon /> */}
       </div>
     </div>
   );

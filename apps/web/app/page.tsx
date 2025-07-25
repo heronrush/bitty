@@ -1,8 +1,10 @@
+import Topbar from "@/components/landing-page/topbar";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
+      <Topbar />
       <div className="py-20 text-center">
         <h1 className="text-7xl">Bitty</h1>
 
