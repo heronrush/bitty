@@ -62,7 +62,8 @@ export async function createNewUser(req: Request, res: Response, next: NextFunct
 
     if (newUser) {
       console.log("new user created successfully");
-      next();
+      console.log(newUser.id);
+      res.json({ id: newUser.id, msg: "signup successful" });
     }
   } catch (err) {
     console.log("some error occured while creating new user");

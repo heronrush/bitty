@@ -3,6 +3,7 @@ import { z } from "zod";
 import { PrismaClient } from "../../generated/prisma";
 import { hashPassword } from "../utils/passwordHash";
 import bcrypt from "bcrypt";
+import { ResponseStatus } from "../utils/statusCodes";
 
 const loginSchema = z.object({
   email: z.string(),
@@ -36,7 +37,6 @@ export async function userExists(req: Request, res: Response, next: NextFunction
     });
 
     if (userIsPresent) {
-      console.log(userIsPresent);
       next();
     } else {
       res.json({ msg: "user with provided email not found" });
@@ -51,17 +51,14 @@ export async function checkPassword(req: Request, res: Response, next: NextFunct
   const { email, password } = req.body;
 
   try {
-    const hashedPasswordFromDb = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         email: email,
       },
-      select: {
-        password: true,
-      },
     });
 
-    if (hashedPasswordFromDb) {
-      const isPasswordSame = await bcrypt.compare(password, hashedPasswordFromDb.password);
+    if (user) {
+      const isPasswordSame = await bcrypt.compare(password, user.password);
 
       if (isPasswordSame) {
         next();
