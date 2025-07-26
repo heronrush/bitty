@@ -5,9 +5,8 @@ import Link from "next/link";
 
 export default function Topbar() {
   return (
-    <div className="flex justify-between py-2">
-      <div></div>
-      <div className="flex gap-10 pr-10">
+    <div className="flex justify-end border-b py-5">
+      <div className="mr-40 flex gap-10">
         <button
           onClick={() => {
             signIn("/api/auth/signin");
