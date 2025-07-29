@@ -9,11 +9,15 @@ import Link from "next/link";
 import React, { useState } from "react";
 import axios from "axios";
 import { redirect } from "next/navigation";
+import { useSetAtom } from "jotai";
+import { userIdAtom } from "@/store/atoms/urlAtom";
 
 export function SignupForm({ className, ...props }: React.ComponentProps<"div">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const setUserid = useSetAtom(userIdAtom);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,6 +28,11 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
     });
 
     if (response.data.msg === "signup successful") {
+      const userId = response.data.userId;
+      console.log("this is the received user id", userId);
+
+      setUserid(userId);
+
       redirect("/user/dashboard");
     } else {
       return;
@@ -88,7 +97,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
               </div>
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <Link href="/login" className="underline underline-offset-4">
+                <Link href="/auth/login" className="underline underline-offset-4">
                   Login
                 </Link>
               </div>

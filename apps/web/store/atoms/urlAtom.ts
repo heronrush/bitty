@@ -1,6 +1,4 @@
-import axios from "axios";
 import { atom } from "jotai";
-import { loadable } from "jotai/utils";
 
 export const urlAtom = atom("");
 
@@ -14,10 +12,16 @@ export const invalidUrlAtom = atom((get) => {
   }
 });
 
-// this is the atom which fetches the generated short url from the db
-export const asyncShortUrlAtom = atom(async (get) => {
-  axios.post(`http://localhost:3000/}`);
-});
+export const shortUrlAtom = atom("");
 
-// this atom's name should be prefixed with `loadable` but i changed it
-export const shortUrlAtom = loadable(asyncShortUrlAtom);
+export type LinkType = {
+  id: number;
+  originalURL: string;
+  shortURL: string;
+  userId: number;
+};
+
+// ---------------------
+export const userIdAtom = atom<null | number>(null);
+
+export const userLinksAtom = atom([]);

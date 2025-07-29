@@ -8,10 +8,14 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+// import { useSetAtom } from "jotai";
+// import { userIdAtom } from "@/store/atoms/urlAtom";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // const setUserId = useSetAtom(userIdAtom)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Provider } from 'jotai';
-import { ReactNode } from 'react';
+import { SessionProvider } from "next-auth/react";
+import { ReactNode } from "react";
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-  return <Provider>{children}</Provider>;
+  return <SessionProvider>{children}</SessionProvider>;
 };

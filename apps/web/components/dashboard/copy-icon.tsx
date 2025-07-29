@@ -1,24 +1,25 @@
 "use client";
 
-import { shortUrlAtom } from "@/store/atoms/urlAtom";
-import { useAtomValue } from "jotai";
-import { toast } from "sonner";
+// // import { shortUrlAtom } from "@/store/atoms/urlAtom";
+// import { useAtomValue } from "jotai";
+// import { toast } from "sonner";
 
-async function copyTextToClipboard(textToCopy: string) {
-  try {
-    await navigator.clipboard.writeText(textToCopy);
-    toast("Short URL copied to clipboard successfully!");
-  } catch (err: unknown) {
-    console.log(err);
-    alert("Failed to copy url, do it manually");
-  }
-}
+// async function copyTextToClipboard(textToCopy: string) {
+//   try {
+//     await navigator.clipboard.writeText(textToCopy);
+//     toast("Short URL copied to clipboard successfully!");
+//   } catch (err: unknown) {
+//     console.log(err);
+//     alert("Failed to copy url, do it manually");
+//   }
+// }
 
 export default function CopyIcon() {
-  const shortUrl = useAtomValue(shortUrlAtom);
+  // const shortUrl = useAtomValue(shortUrlAtom);
 
   return (
-    <button onClick={() => copyTextToClipboard(shortUrl)}>
+    // <button onClick={() => copyTextToClipboard(shortUrl)}>
+    <button>
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

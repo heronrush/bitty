@@ -1,20 +1,22 @@
 "use client";
 
-import { invalidUrlAtom, shortUrlAtom, urlAtom } from "@/store/atoms/urlAtom";
+import { invalidUrlAtom, shortUrlAtom, urlAtom, userIdAtom } from "@/store/atoms/urlAtom";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import axios from "axios";
 import { displayModalAtom } from "@/store/atoms/modalAtom";
 
 export default function GenerateShortLinkButton() {
   const [url, setUrl] = useAtom(urlAtom);
-  const invalidUrl = useAtomValue(invalidUrlAtom);
+  const invalidUrl = useAtomValue(invalidUrlAtom); // checks if the typed url is valid or not
   const setShortUrl = useSetAtom(shortUrlAtom);
+  const userId = useAtomValue(userIdAtom);
 
   const setModalOff = useSetAtom(displayModalAtom);
 
   async function handleClick() {
     const response = await axios.post("http://localhost:3002/api/short", {
       url,
+      userId: userId,
     });
 
     const shortUrl = await response.data.shortURL;
