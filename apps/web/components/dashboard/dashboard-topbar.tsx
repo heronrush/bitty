@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HamburgerIcon from "./hamburger-icon";
+// import HamburgerIcon from "./hamburger-icon";
 import CreateLinkButton from "./create-link-button";
 import { LogoutButton } from "../buttons";
 
