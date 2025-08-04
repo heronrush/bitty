@@ -5,6 +5,7 @@ import { linkShortenerRouter } from "./shortenURL";
 import { redirectRequestRouter } from "./redirectRequest";
 import { signupRouter } from "./signup";
 import { loginRouter } from "./login";
+import { linkRouter } from "./links";
 
 export const rootRouter = Router();
 
@@ -12,3 +13,4 @@ rootRouter.use(linkShortenerRouter);
 rootRouter.use(redirectRequestRouter);
 rootRouter.use(signupRouter);
 rootRouter.use(loginRouter);
+rootRouter.use(linkRouter);

@@ -61,7 +61,7 @@ export async function checkPassword(req: Request, res: Response, next: NextFunct
       const isPasswordSame = await bcrypt.compare(password, user.password);
 
       if (isPasswordSame) {
-        next();
+        res.json({ msg: "login successful", userId: user.id });
       } else {
         console.log("password is incorrect");
         res.json({ msg: "password is incorrect" });

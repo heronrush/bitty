@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { checkPassword, userExists, validateLoginData } from "../middleware/loginMiddleware";
+import { PrismaClient } from "../../generated/prisma";
 
 export const loginRouter = Router();
 

@@ -35,13 +35,13 @@ export async function emailAlreadyExists(req: Request, res: Response, next: Next
     });
 
     if (userIsPresent) {
-      console.log("provide a new email for signup");
-      res.json({ msg: "provide a new email for signup" });
-      next();
+      console.log("provide a new email for signup, user already exists with the same email");
+      res.json({ msg: "provide a new email for signup, user already exists with the same email" });
     } else {
       next();
     }
   } catch (err) {
+    return;
     console.log(err);
   }
 }
@@ -63,9 +63,10 @@ export async function createNewUser(req: Request, res: Response, next: NextFunct
     if (newUser) {
       console.log("new user created successfully");
       console.log(newUser.id);
-      res.json({ id: newUser.id, msg: "signup successful" });
+      res.json({ userId: newUser.id, msg: "signup successful" });
     }
   } catch (err) {
+    res.json({ msg: "could not create new user" });
     console.log("some error occured while creating new user");
   }
 }
